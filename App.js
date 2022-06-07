@@ -11,17 +11,19 @@ import {
 type PrimitiveModuleType = {
     helloWorld: () => void,
     helloX: () => void,
+    getDeviceName: () => string
 }
 const PrimitiveModule: PrimitiveModuleType = NativeModules.PrimitiveModule;
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
+    const deviceName = PrimitiveModule.getDeviceName();
 
     return (
         <SafeAreaView>
             <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'}/>
             <ScrollView contentInsetAdjustmentBehavior="automatic">
-                <Text children={'Native Module'}/>
+                <Text>{`Device Name : ${deviceName}`}</Text>
                 <Button
                     title={'Hello World'}
                     onPress={() => {

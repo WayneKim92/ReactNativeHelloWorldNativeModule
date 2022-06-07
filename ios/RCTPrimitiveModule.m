@@ -7,13 +7,18 @@ RCT_EXPORT_METHOD(helloWorld)
 {
   // add a console log in the method so you can confirm it has been invoked from JavaScript in your React Native application
   RCTLogInfo(@"Hello World");
-  RCTLog(@"Hello World");
 }
 
 RCT_EXPORT_METHOD(helloX:(NSString *)value)
 {
   // add a console log in the method so you can confirm it has been invoked from JavaScript in your React Native application
   RCTLogInfo(@"Hello %@", value);
+}
+
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getDeviceName)
+{
+  // return type of RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD method must be of object type
+  return [[UIDevice currentDevice] name];
 }
 
 
