@@ -4,20 +4,19 @@ import {
     ScrollView,
     StatusBar,
     useColorScheme,
-    NativeModules,
-    Button, Text,
+    Button,
+    Text,
 } from 'react-native';
 
-type PrimitiveModuleType = {
-    helloWorld: () => void,
-    helloX: () => void,
-    getDeviceName: () => string
-}
-const PrimitiveModule: PrimitiveModuleType = NativeModules.PrimitiveModule;
+import {
+    getDeviceName,
+    helloWorld,
+    helloX,
+} from './NativePrimitiveModule';
 
 const App = () => {
     const isDarkMode = useColorScheme() === 'dark';
-    const deviceName = PrimitiveModule.getDeviceName();
+    const deviceName = getDeviceName();
 
     return (
         <SafeAreaView>
@@ -27,13 +26,13 @@ const App = () => {
                 <Button
                     title={'Hello World'}
                     onPress={() => {
-                        PrimitiveModule.helloWorld();
+                        helloWorld();
                     }}
                 />
                 <Button
                     title={'Hello Wayne'}
                     onPress={() => {
-                        PrimitiveModule.helloX('Wayne');
+                        helloX('Wayne');
                     }}
                 />
             </ScrollView>
